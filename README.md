@@ -144,12 +144,13 @@ Expected tool sequence: `ingest_log` → `search_logs(query="timeout")` → `cor
 
 ## Comparison Results
 
-*(To be filled after testing with and without tools in Claude Desktop / Gemini CLI)*
+*Tested on `sample.log` (25 entries, 2025-01-15T14:12:01 → 14:30:10) with the question:
+"What caused the error spike around 14:15? Were there any anomalies?"*
 
-| Dimension    | Without Tools         | With Tools                 |
-|--------------|-----------------------|----------------------------|
-| Accuracy     |                       |                            |
-| Specificity  |                       |                            |
-| Completeness |                       |                            |
-| Confidence   |                       |                            |
-| Latency      |                       |                            |
+| Dimension    | Without Tools                                                                 | With Tools                                                                                  |
+|--------------|-------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
+| Accuracy     | Identified a DB issue around 14:15 but couldn't confirm exact timestamps or root cause | Exact first failure at 14:15:01 (line 8), confirmed 4x DB timeout + refused connection from 192.168.1.50 |
+| Specificity  | Generic: "database connection errors in the 14:15 range, possibly network-related" | Precise: 4 distinct error patterns, 8 total errors, anomaly window 14:12→14:17 (7 errors/19 entries) |
+| Completeness | Missed the secondary disk space issue at 14:25, missed the 2 retry warnings  | All 8 errors found, 9 events correlated around the incident, disk spike at 14:25 identified |
+| Confidence   | Heavy hedging: "it seems", "possibly", "it appears the database may have…"    | Direct citations: exact line numbers, timestamps, normalized patterns (e.g. `<UUID>`, `<IP>`) |
+| Latency      | 1 response, ~2–3 s                                                            | 4–5 tool calls (ingest → search → summary → anomalies → correlate), ~5–10 s total          |
