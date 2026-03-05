@@ -1,0 +1,25 @@
+2025-01-15T14:12:01 INFO Server started on port 8080
+2025-01-15T14:12:05 INFO Loading configuration from /etc/app/config.yaml
+2025-01-15T14:12:06 INFO Connected to database at 192.168.1.50
+2025-01-15T14:13:22 WARN Slow query: 2.3s on /api/users
+2025-01-15T14:13:45 INFO Request processed: GET /api/health
+2025-01-15T14:14:00 WARN High memory usage: 82%
+2025-01-15T14:14:30 INFO Request processed: POST /api/orders
+2025-01-15T14:15:01 ERROR DB connection timeout
+2025-01-15T14:15:02 ERROR Failed to process request 7a3b22c1-9f4e-4b2d-a1c3-8d5e6f7a8b9c
+2025-01-15T14:15:03 ERROR DB connection timeout
+2025-01-15T14:15:04 ERROR Failed to process request e2d4f6a8-1b3c-5d7e-9f0a-2b4c6d8e0f1a
+2025-01-15T14:15:05 ERROR DB connection timeout
+2025-01-15T14:15:06 WARN Retry attempt 1 for database connection
+2025-01-15T14:15:10 ERROR Connection refused from 192.168.1.50
+2025-01-15T14:15:15 ERROR DB connection timeout
+2025-01-15T14:15:20 WARN Retry attempt 2 for database connection
+2025-01-15T14:16:10 INFO DB connection restored
+2025-01-15T14:16:15 INFO Processing backlog: 12 pending requests
+2025-01-15T14:17:00 INFO Request processed: GET /api/users
+2025-01-15T14:18:30 WARN Slow query: 1.8s on /api/orders
+2025-01-15T14:20:00 INFO Health check passed
+2025-01-15T14:25:01 ERROR Disk space low: /var/log at 95%
+2025-01-15T14:30:00 INFO Scheduled cleanup started
+2025-01-15T14:30:05 INFO Deleted 150 old log files
+2025-01-15T14:30:10 INFO Disk space recovered: /var/log at 60%
